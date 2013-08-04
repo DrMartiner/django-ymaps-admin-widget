@@ -37,6 +37,6 @@ class YMapsPointWidget(widgets.Input):
 
     class Media(object):
         js = (
-            "http://api-maps.yandex.ru/2.0/?load=package.standard&mode=debug&lang=ru-RU",
-            getattr(settings, 'YMAP_JQUERY_URL', '%sjs/jquery.min.js' % settings.STATIC_URL),
+            "http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU",
+            getattr(settings, 'YMAP_JQUERY_URL'),
         )
