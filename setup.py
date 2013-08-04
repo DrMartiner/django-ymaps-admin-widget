@@ -8,7 +8,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-ymaps-admin-widget',
-    version='1.0.2',
+    version='1.0.3',
     packages=['yandexmaps_widget'],
     url='https://github.com/DrMartiner/django-ymaps-admin-widget',
     license='MIT',
