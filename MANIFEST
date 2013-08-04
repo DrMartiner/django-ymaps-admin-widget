@@ -6,6 +6,4 @@ yandexmaps_widget/models.py
 yandexmaps_widget/models.pyc
 yandexmaps_widget/widgets.py
 yandexmaps_widget/widgets.pyc
-yandexmaps_widget/static/js/jquery.min.js
-yandexmaps_widget/static/js/yandexmaps_widget/ymap-widget.js
 yandexmaps_widget/templates/yandexmaps_widget/ymaps_point_widget.html
