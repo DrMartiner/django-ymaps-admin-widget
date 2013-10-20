@@ -1,2 +1,3 @@
 recursive-include yandexmaps_widget/templates/yandexmaps_widget/*
+recursive-include yandexmaps_widget/static/js/*
 recursive-include yandexmaps_widget *

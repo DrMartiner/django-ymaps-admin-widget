@@ -17,6 +17,7 @@ build
 dist
 *.egg-info
 
+node_modules
 build
 dist
 yandexmaps_widget.egg-info/*w

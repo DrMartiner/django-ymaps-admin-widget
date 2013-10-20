@@ -1,63 +1,9 @@
+{% load static %}
 <div id="map" style="width: {{ width }}px; height: {{ height }}px"></div>
 <script type="text/javascript">
-    $(document).ready(function () {
-        var placemark = null;
-
-        ymaps.ready(function () {
-            var input_id = '{{ input_id|default:"id_coords" }}';
-            var center_latitude = parseFloat("{{ center_latitude|default:'55.76' }}".replace(',', '.'));
-            var center_longitude = parseFloat("{{ center_longitude|default:'37.64' }}".replace(',', '.'));
-            var default_zoom = {{ default_zoom|default:"10" }};
-
-            console.log(input_id, center_longitude, center_latitude, default_zoom);
-
-            function toPostgisPoint( geo_point ) {
-                return ['POINT(',geo_point[0].toString(),geo_point[1].toString(),')'].join(' ');
-            }
-
-            function fillFromPostgisPoint(p) {
-                var res = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec(p),
-                lat = parseFloat(res[1]),
-                lng = parseFloat(res[2]);
-                return [lat, lng];
-            }
-
-            $input = $('#' + input_id);
-
-            function NewPlacemark(point) {
-                var newPoint =  new ymaps.Placemark(
-                    point, {},
-                    {draggable: false, hasBalloon: false}
-                );
-                newPoint.events.add('dragend', function(e) {
-                    $input.val(toPostgisPoint(point));
-                });
-                return newPoint;
-            }
-
-            var center = [center_latitude, center_longitude];
-            if($input.val())
-                center = fillFromPostgisPoint($input.val());
-            placemark = NewPlacemark(center);
-
-            var map = new ymaps.Map("map", {
-                zoom: default_zoom,
-                center: center
-            });
-            map.geoObjects.add(placemark);
-            map.controls.add("mapTools").add("zoomControl");
-
-            map.events.add('click', function (e) {
-                if(placemark) {
-                    map.geoObjects.remove(placemark);
-                    placemark.geometry.setCoordinates(e.get('coordPosition'));
-                }
-                else {
-                    placemark = NewPlacemark(e.get('coordPosition'));
-                }
-                map.geoObjects.add(placemark);
-                $input.val(toPostgisPoint(placemark.geometry.getCoordinates()));
-            });
-        });
-    });
+    window.zoom = {{ zoom }};
+    window.latitude = '{{ latitude }}';
+    window.longitude = '{{ longitude }}';
+    window.inputId = '{{ input_id }}';
 </script>
+<script src="{% static 'js/ymaps-point-widget.js' %}" type="text/javascript"></script>

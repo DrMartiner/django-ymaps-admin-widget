@@ -14,7 +14,7 @@ class YMapsPointWidget(widgets.Input):
 
         # Define map options
         self.map_options = self.default_map_options
-        extra_map_options = kwargs.get('map_options', None)
+        extra_map_options = kwargs.get('map_options')
         if extra_map_options:
             self.map_options.update(extra_map_options)
 
@@ -23,9 +23,9 @@ class YMapsPointWidget(widgets.Input):
         return {
             'width': getattr(settings, 'YMAP_WIDTH', 600),
             'height': getattr(settings, 'YMAP_HEIGHT', 400),
-            'center_latitude': getattr(settings, 'YMAP_CENTER_LATITUDE', 55.76),
-            'center_longitude': getattr(settings, 'YMAP_CENTER_LONGITUDE', 37.64),
-            'default_zoom': getattr(settings, 'YMAP_DEFAULT_ZOOM', 10),
+            'zoom': getattr(settings, 'YMAP_ZOOM', 10),
+            'latitude': getattr(settings, 'YMAP_CENTER_LATITUDE', 55.76),
+            'longitude': getattr(settings, 'YMAP_CENTER_LONGITUDE', 37.64),
         }
 
     def render(self, name, value, attrs=None):
