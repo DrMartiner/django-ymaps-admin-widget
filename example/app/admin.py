@@ -14,5 +14,6 @@ class PointAdminForm(forms.ModelForm):
 
 class PointAdmin(admin.ModelAdmin):
     form = PointAdminForm
+    list_display = ('name', 'coords')
 
 admin.site.register(Point, PointAdmin)
