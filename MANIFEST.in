@@ -1,2 +1,2 @@
+recursive-include yandexmaps_widget/templates/yandexmaps_widget/*
 recursive-include yandexmaps_widget *
-exclude *.pyc
