@@ -17,11 +17,12 @@ $(document).ready () ->
         toPostgisPoint = (geo_point) ->
             return ['POINT(',geo_point[0].toString(),geo_point[1].toString(),')'].join(' ')
 
-        fillFromPostgisPoint = (p) ->
-            res = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec p
-            lat = parseFloat res[1]
-            lng = parseFloat res[2]
-            return [lat, lng]
+        convertPostGisToYandex = (point) ->
+            coords = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec point
+            if coords.length != 2
+                console.error 'Error at parse GIS point', point
+                return []
+            return [parseFloat(coords[1]), parseFloat(coords[2])]
 
         $input = $('#' + inputId)
 
@@ -35,7 +36,7 @@ $(document).ready () ->
 
         center = [latitude, longitude]
         if $input.val()
-            center = fillFromPostgisPoint $input.val()
+            center = convertPostGisToYandex $input.val()
         placemark = NewPlacemark center
 
         console.debug 'Init Yandex -> ', center
