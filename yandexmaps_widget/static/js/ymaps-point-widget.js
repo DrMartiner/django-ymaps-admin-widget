@@ -3,7 +3,7 @@
     var placemark;
     placemark = null;
     return ymaps.ready(function() {
-      var $input, NewPlacemark, center, fillFromPostgisPoint, inputId, latitude, longitude, map, toPostgisPoint, zoom, _ref, _ref1, _ref2, _ref3;
+      var $input, NewPlacemark, center, convertPostGisToYandex, inputId, latitude, longitude, map, toPostgisPoint, zoom, _ref, _ref1, _ref2, _ref3;
       inputId = (_ref = window.inputId) != null ? _ref : 'id_coords';
       zoom = (_ref1 = window.zoom) != null ? _ref1 : 10;
       latitude = (_ref2 = window.latitude) != null ? _ref2 : '37.64';
@@ -12,14 +12,16 @@
       longitude = parseFloat(window.longitude.replace(',', '.'));
       console.debug('Init params', latitude, longitude, zoom, inputId);
       toPostgisPoint = function(geo_point) {
-        return ['POINT(', geo_point[0].toString(), geo_point[1].toString(), ')'].join(' ');
+        return ['POINT(', geo_point[1].toString(), geo_point[0].toString(), ')'].join(' ');
       };
-      fillFromPostgisPoint = function(p) {
-        var lat, lng, res;
-        res = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec(p);
-        lat = parseFloat(res[1]);
-        lng = parseFloat(res[2]);
-        return [lat, lng];
+      convertPostGisToYandex = function(point) {
+        var coords;
+        coords = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec(point);
+        if (coords.length !== 2) {
+          console.error('Error at parse GIS point', point);
+          return [];
+        }
+        return [parseFloat(coords[2]), parseFloat(coords[1])];
       };
       $input = $('#' + inputId);
       NewPlacemark = function(point) {
@@ -35,7 +37,7 @@
       };
       center = [latitude, longitude];
       if ($input.val()) {
-        center = fillFromPostgisPoint($input.val());
+        center = convertPostGisToYandex($input.val());
       }
       placemark = NewPlacemark(center);
       console.debug('Init Yandex -> ', center);

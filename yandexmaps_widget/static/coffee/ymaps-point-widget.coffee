@@ -15,14 +15,14 @@ $(document).ready () ->
         console.debug 'Init params', latitude, longitude, zoom, inputId
 
         toPostgisPoint = (geo_point) ->
-            return ['POINT(',geo_point[0].toString(),geo_point[1].toString(),')'].join(' ')
+            return ['POINT(', geo_point[1].toString(), geo_point[0].toString(), ')'].join(' ')
 
         convertPostGisToYandex = (point) ->
             coords = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec point
             if coords.length != 2
                 console.error 'Error at parse GIS point', point
                 return []
-            return [parseFloat(coords[1]), parseFloat(coords[2])]
+            return [parseFloat(coords[2]), parseFloat(coords[1])]
 
         $input = $('#' + inputId)
 
