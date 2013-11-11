@@ -1,3 +1,3 @@
 include README.md
-recursive-include yandexmaps_widget *
 exclude *.pyc
+recursive-include yandexmaps_widget *.py *.html *.js
