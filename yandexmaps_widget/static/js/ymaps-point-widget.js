@@ -17,7 +17,7 @@
       convertPostGisToYandex = function(point) {
         var coords;
         coords = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec(point);
-        if (coords.length !== 2) {
+        if (coords.length !== 3) {
           console.error('Error at parse GIS point', point);
           return [];
         }

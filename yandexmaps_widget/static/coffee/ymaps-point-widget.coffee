@@ -19,7 +19,7 @@ $(document).ready () ->
 
         convertPostGisToYandex = (point) ->
             coords = /POINT\s*\(\s*([0-9\.]+)\s*([0-9.]+)\s*\)/.exec point
-            if coords.length != 2
+            if coords.length != 3
                 console.error 'Error at parse GIS point', point
                 return []
             return [parseFloat(coords[2]), parseFloat(coords[1])]
