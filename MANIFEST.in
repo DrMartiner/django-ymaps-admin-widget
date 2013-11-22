@@ -1,9 +1,8 @@
 include README.md
-README.md
-setup.py
-yandexmaps_widget/__init__.py
-yandexmaps_widget/models.py
-yandexmaps_widget/widgets.py
-yandexmaps_widget/static/js/ymaps-point-widget.js
-yandexmaps_widget/templates/yandexmaps_widget/ymaps_point_widget.html
+include setup.py
+include yandexmaps_widget/__init__.py
+include yandexmaps_widget/models.py
+include yandexmaps_widget/widgets.py
+include yandexmaps_widget/static/js/ymaps-point-widget.js
+include yandexmaps_widget/templates/yandexmaps_widget/ymaps_point_widget.html
 exclude *.pyc
