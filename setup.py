@@ -7,7 +7,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-ymaps-admin-widget',
-    version='1.0.9',
+    version='1.0.10',
     packages=['yandexmaps_widget'],
     url='https://github.com/DrMartiner/django-ymaps-admin-widget',
     license='MIT',
@@ -25,9 +25,5 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-    ],
-    install_requires=[
-        'Django>=1.3',
-        'psycopg2',
-    ],
+    ]
 )

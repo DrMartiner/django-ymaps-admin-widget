@@ -1,6 +1,6 @@
 {
   "name": "yandexmaps_widget",
-  "version": "1.0.5",
+  "version": "1.0.10",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.7.0",
