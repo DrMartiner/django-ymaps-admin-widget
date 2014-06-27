@@ -2,12 +2,13 @@
 
 import os
 from distutils.core import setup
+from yandexmaps_widget import __version__
 
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-ymaps-admin-widget',
-    version='1.0.10',
+    version=__version__,
     packages=['yandexmaps_widget'],
     url='https://github.com/DrMartiner/django-ymaps-admin-widget',
     license='MIT',

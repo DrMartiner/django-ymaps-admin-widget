@@ -1,5 +1,10 @@
 include README.md
+include *.py
 exclude *.pyc
 recursive-include yandexmaps_widget *.py
 recursive-include yandexmaps_widget *.js
 recursive-include yandexmaps_widget *.html
+recursive-include static/js *.js
+recursive-include templates/yandexmaps_widget *.html
+exclude package.json
+exclude gruntfile.coffee
