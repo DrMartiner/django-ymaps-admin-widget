@@ -4,6 +4,13 @@ from django.conf import settings
 from django.forms import widgets
 from django.template import loader
 
+JS = (
+    "http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU",
+)
+YMAP_JQUERY_URL = getattr(settings, 'YMAP_JQUERY_URL', 'https://code.jquery.com/jquery-2.1.1.min.js')
+if YMAP_JQUERY_URL:
+    JS = JS + (YMAP_JQUERY_URL,)
+
 
 class YMapsPointWidget(widgets.Input):
     input_type = 'hidden'
@@ -36,7 +43,4 @@ class YMapsPointWidget(widgets.Input):
         return r + loader.render_to_string(self.template, params)
 
     class Media(object):
-        js = (
-            "http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU",
-            getattr(settings, 'YMAP_JQUERY_URL'),
-        )
+        js = JS
