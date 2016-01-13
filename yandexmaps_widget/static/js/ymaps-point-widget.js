@@ -44,10 +44,10 @@
       console.debug('Init PostGIS -> ', $input.val());
       map = new ymaps.Map("map", {
         zoom: zoom,
-        center: center
+        center: center,
+        controls: ['mapTools', 'zoomControl']
       });
       map.geoObjects.add(placemark);
-      map.controls.add('mapTools').add('zoomControl');
       return map.events.add('click', function(e) {
         if (placemark) {
           map.geoObjects.remove(placemark);

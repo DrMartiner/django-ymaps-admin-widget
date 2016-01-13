@@ -10,6 +10,7 @@ setup(
     name='django-ymaps-admin-widget',
     version=__version__,
     packages=['yandexmaps_widget'],
+    package_data={'yandexmaps_widget': ["templates/yandexmaps_widget/*", "static/js/*"]},
     url='https://github.com/DrMartiner/django-ymaps-admin-widget',
     license='MIT',
     author='Alexey Kuzmin',

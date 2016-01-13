@@ -5,7 +5,7 @@ from django.forms import widgets
 from django.template import loader
 
 JS = (
-    "http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU",
+    "http://api-maps.yandex.ru/2.1/?lang=ru_RU",
 )
 YMAP_JQUERY_URL = getattr(settings, 'YMAP_JQUERY_URL', 'https://code.jquery.com/jquery-2.1.1.min.js')
 if YMAP_JQUERY_URL:

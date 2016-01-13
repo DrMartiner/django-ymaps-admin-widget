@@ -45,8 +45,8 @@ $(document).ready () ->
         map = new ymaps.Map "map",
             zoom: zoom
             center: center
+            controls: ['mapTools', 'zoomControl']
         map.geoObjects.add placemark
-        map.controls.add('mapTools').add 'zoomControl'
 
         map.events.add 'click', (e) ->
             if placemark
